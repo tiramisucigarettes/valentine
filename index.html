@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lavantika 💛 Will You Be My Valentine?</title>
+
+  <!-- Soft Pinterest-style fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Quicksand', sans-serif;
+      background: radial-gradient(circle at top, #fff6df, #fde7eb 60%, #f9dcdc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Watercolor sunflower + lily vibe */
+    .flowers {
+      position: absolute;
+      inset: 0;
+      background:
+        url('https://i.imgur.com/8YqGZyB.png') repeat,
+        radial-gradient(circle at 15% 25%, rgba(255,215,120,0.45), transparent 45%),
+        radial-gradient(circle at 85% 30%, rgba(255,190,200,0.45), transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(255,220,170,0.4), transparent 50%);
+      background-size: 420px 420px, auto, auto, auto;
+      filter: blur(0.3px);
+      z-index: 0;
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 250, 240, 0.92);
+      border-radius: 28px;
+      padding: 48px 44px 56px;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+      max-width: 480px;
+      width: 92%;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #e48b9b;
+    }
+
+    h2 {
+      font-weight: 600;
+      color: #8a6a4f;
+      margin-bottom: 34px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      position: relative;
+      margin-bottom: 32px;
+    }
+
+    button {
+      padding: 14px 38px;
+      border-radius: 14px;
+      border: none;
+      font-size: 1.05rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    #yesBtn {
+      background: linear-gradient(180deg, #ff9aa9, #ff7f96);
+      color: #fff;
+      box-shadow: 0 12px 25px rgba(255, 150, 170, 0.6);
+    }
+
+    #yesBtn:hover {
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    #noBtn {
+      position: absolute;
+      background: #e9e4dc;
+      color: #7a6f66;
+      cursor: not-allowed;
+    }
+
+    /* Cat illustration (drawn style) */
+    .cat-scene {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .cat {
+      width: 170px;
+      height: 170px;
+      background: #f6d3b3;
+      border-radius: 50%;
+      position: relative;
+      box-shadow: inset 0 -6px 0 rgba(0,0,0,0.05);
+      animation: bounce 1.6s ease-in-out infinite;
+    }
+
+    .ear {
+      position: absolute;
+      top: -26px;
+      width: 56px;
+      height: 56px;
+      background: #f6d3b3;
+      border-radius: 14px;
+    }
+
+    .ear.left { left: 6px; transform: rotate(-18deg); }
+    .ear.right { right: 6px; transform: rotate(18deg); }
+
+    .eye {
+      position: absolute;
+      top: 66px;
+      width: 18px;
+      height: 12px;
+      border-bottom: 4px solid #5c4636;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .eye.left { left: 46px; }
+    .eye.right { right: 46px; }
+
+    .blush {
+      position: absolute;
+      top: 92px;
+      width: 30px;
+      height: 16px;
+      background: rgba(255,130,150,0.6);
+      border-radius: 50%;
+    }
+
+    .blush.left { left: 22px; }
+    .blush.right { right: 22px; }
+
+    .mouth {
+      position: absolute;
+      bottom: 44px;
+      left: 50%;
+      width: 34px;
+      height: 18px;
+      border-bottom: 4px solid #5c4636;
+      border-radius: 0 0 34px 34px;
+      transform: translateX(-50%);
+    }
+
+    .yay {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.9rem;
+      color: #e68a9c;
+    }
+
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="flowers"></div>
+
+  <div class="card" id="card">
+    <h1>Lavantika Mehra 💛</h1>
+    <h2>Will you be my Valentine?</h2>
+
+    <div class="buttons" id="buttons">
+      <button id="yesBtn">Yes 💗</button>
+      <button id="noBtn">No</button>
+    </div>
+
+    <div class="cat-scene" id="catScene">
+      <div class="cat">
+        <div class="ear left"></div>
+        <div class="ear right"></div>
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+        <div class="blush left"></div>
+        <div class="blush right"></div>
+        <div class="mouth"></div>
+      </div>
+      <div class="yay">YAY!!! 💕😺</div>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const buttons = document.getElementById('buttons');
+    const catScene = document.getElementById('catScene');
+
+    document.addEventListener('mousemove', (e) => {
+      const rect = noBtn.getBoundingClientRect();
+      const distX = Math.abs(e.clientX - (rect.left + rect.width / 2));
+      const distY = Math.abs(e.clientY - (rect.top + rect.height / 2));
+
+      if (distX < 110 && distY < 70) {
+        const x = Math.random() * (buttons.offsetWidth - rect.width);
+        const y = Math.random() * 36;
+        noBtn.style.left = `${x}px`;
+        noBtn.style.top = `${y}px`;
+      }
+    });
+
+    yesBtn.addEventListener('click', () => {
+      buttons.style.display = 'none';
+      catScene.style.display = 'flex';
+    });
+  </script>
+
+</body>
+</html>
